@@ -77,7 +77,7 @@ namespace GitHub.Runner.Common
             public static readonly Architecture PlatformArchitecture = Architecture.X64;
 #elif ARM
             public static readonly Architecture PlatformArchitecture = Architecture.Arm;
-#elif ARM64            
+#elif ARM64
             public static readonly Architecture PlatformArchitecture = Architecture.Arm64;
 #endif
 
@@ -152,7 +152,7 @@ namespace GitHub.Runner.Common
                 public static readonly string DiskSpaceWarning = "runner.diskspace.warning";
                 public static readonly string Node12Warning = "DistributedTask.AddWarningToNode12Action";
                 public static readonly string UseContainerPathForTemplate = "DistributedTask.UseContainerPathForTemplate";
-                public static readonly string AllowRunnerContainerHooks = "DistributedTask.AllowRunnerContainerHooks"; 
+                public static readonly string AllowRunnerContainerHooks = "DistributedTask.AllowRunnerContainerHooks";
             }
 
             public static readonly string InternalTelemetryIssueDataKey = "_internal_telemetry";
@@ -232,6 +232,7 @@ namespace GitHub.Runner.Common
                 public static readonly string AllowUnsupportedStopCommandTokens = "ACTIONS_ALLOW_UNSECURE_STOPCOMMAND_TOKENS";
                 public static readonly string RequireJobContainer = "ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER";
                 public static readonly string RunnerDebug = "ACTIONS_RUNNER_DEBUG";
+                public static readonly string SshDebug = "ACTIONS_SSH_DEBUG";
                 public static readonly string StepDebug = "ACTIONS_STEP_DEBUG";
                 public static readonly string AllowActionsUseUnsecureNodeVersion = "ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION";
             }
@@ -241,8 +242,8 @@ namespace GitHub.Runner.Common
                 public static readonly string ToolsDirectory = "agent.ToolsDirectory";
 
                 // Set this env var to "node12" to downgrade the node version for internal functions (e.g hashfiles). This does NOT affect the version of node actions.
-                public static readonly string ForcedInternalNodeVersion = "ACTIONS_RUNNER_FORCED_INTERNAL_NODE_VERSION"; 
-                public static readonly string ForcedActionsNodeVersion = "ACTIONS_RUNNER_FORCE_ACTIONS_NODE_VERSION"; 
+                public static readonly string ForcedInternalNodeVersion = "ACTIONS_RUNNER_FORCED_INTERNAL_NODE_VERSION";
+                public static readonly string ForcedActionsNodeVersion = "ACTIONS_RUNNER_FORCE_ACTIONS_NODE_VERSION";
             }
 
             public static class System

@@ -28,7 +28,8 @@ namespace GitHub.Runner.Worker
         private static HashSet<String> SecretVariableMaskWhitelist = new HashSet<String>(StringComparer.OrdinalIgnoreCase)
         {
             Constants.Variables.Actions.StepDebug,
-            Constants.Variables.Actions.RunnerDebug
+            Constants.Variables.Actions.RunnerDebug,
+            Constants.Variables.Actions.SshDebug
         };
 
         public async Task<int> RunAsync(string pipeIn, string pipeOut)

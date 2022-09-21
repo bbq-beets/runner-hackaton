@@ -191,6 +191,7 @@ namespace GitHub.Runner.Worker
 
                     // Evaluate the job-level environment variables
                     context.Debug("Evaluating job-level environment variables");
+
                     var templateEvaluator = context.ToPipelineTemplateEvaluator();
                     foreach (var token in message.EnvironmentVariables)
                     {
@@ -320,10 +321,10 @@ namespace GitHub.Runner.Worker
                         if (message.ContextData.TryGetValue("inputs", out var pipelineContextData))
                         {
                             var inputs = pipelineContextData.AssertDictionary("inputs");
-                            if (inputs.Any()) 
+                            if (inputs.Any())
                             {
                                 context.Output($"##[group] Inputs");
-                                foreach (var input in inputs) 
+                                foreach (var input in inputs)
                                 {
                                     context.Output($"  {input.Key}: {input.Value}");
                                 }
@@ -331,7 +332,7 @@ namespace GitHub.Runner.Worker
                             }
                         }
 
-                        if (!string.IsNullOrWhiteSpace(message.JobDisplayName)) 
+                        if (!string.IsNullOrWhiteSpace(message.JobDisplayName))
                         {
                             context.Output($"Complete job name: {message.JobDisplayName}");
                         }

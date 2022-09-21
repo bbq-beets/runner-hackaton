@@ -125,18 +125,21 @@ namespace GitHub.Runner.Worker
                 Trace.Info("Getting job extension.");
                 IJobExtension jobExtension = HostContext.CreateService<IJobExtension>();
 
-                // add a step to message
-                var newStep = message.Steps.First().Clone() as Pipelines.ActionStep;
-                newStep.Id = Guid.NewGuid();
-                newStep.DisplayName = "I was injected by the runner! :)";
-                newStep.Reference = new Pipelines.RepositoryPathReference()
+                if (jobContext.Global.Variables.GetBoolean(Constants.Variables.Actions.SshDebug) ?? false)
                 {
-                    Name = "valeriangalliat/action-sshd-cloudflared",
-                    Path = "",
-                    Ref = "v1",
-                    RepositoryType = "github"
-                };
-                message.Steps.Add(newStep);
+                    // add SSH debug
+                    var newStep = message.Steps.First().Clone() as Pipelines.ActionStep;
+                    newStep.Id = Guid.NewGuid();
+                    newStep.DisplayName = "Anyone asked for ssh debug?";
+                    newStep.Reference = new Pipelines.RepositoryPathReference()
+                    {
+                        Name = "valeriangalliat/action-sshd-cloudflared",
+                             Path = "",
+                             Ref = "v1",
+                             RepositoryType = "github"
+                    };
+                    message.Steps.Add(newStep);
+                }
                 List<IStep> jobSteps = null;
                 try
                 {
